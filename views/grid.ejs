@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        } */
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr) 1fr;
+            gap: 50px; 
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .grid-item {
+            padding: 10px;
+        }
+
+        .right-grid {
+            grid-column: 4;
+           
+        }
+        .box2{
+            text-overflow: clip;
+            overflow-y: scroll;
+        }
+        
+
+    </style>
+</head>
+<body>
+   <%- include("navbar.ejs") %>
+    <div class="container">
+        <div class="grid-item">Grid 1
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus labore autem deserunt asperiores dignissimos natus nihil ipsa similique voluptates dicta.
+        </div>
+        <div class="grid-item box2">Grid 2
+            <%- include("weather_data.ejs") %>
+        </div>
+        <div class="grid-item">
+            <h5 class="property creation">Created By: <%= creationLocation %></h5>
+            <h5 class="property locn">Locations: <%= location %></h5> <!--will be Rajsthan only for now-->
+            <h5 class="property water">Water Required: <%= rainfall %></h5>
+            <h5 class="property immune">Immune to: <%= pest_dis %></h5>
+            <h5 class="property yield">Yield: <%= Yield %></h5>
+            <h5 class="property nutrient">Nutrients Req: <%= spec_ft %></h5>
+            <h5 class="property activeDisease">Diseases to Watch out for: <%= flowering %></h5>
+            <h5 class="property pest">Reccomended Pesticides: <%= maturing %></h5>
+            <h5 class="property time">Time till Harvest: <%= height %></h5>
+        </div>
+        <div class="grid-item right-grid">profile  &#xf2bd;
+        </div>
+    </div>
+    <%- include("footer.ejs") %>
+</body>
+</html>

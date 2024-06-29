@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./seedBuffer.css">
+    <title>AgroFuture</title>
+</head>
+<body>
+    <%- include("navbar.ejs") %>
+
+    <div class="container-dd">
+        <div class="container-item">
+        <label for="crop">Choose a Crop</label>
+        <br>
+        <hr>
+        <select name="crop" id="crop">
+            <optgroup label="Maize">
+                <option value="var1">Rajasthan</option>
+            </optgroup>
+            <optgroup label="Millet">
+                <option value="mercedes">Rajasthan</option>
+            </optgroup>
+        </select>
+        
+        <button type="button" onclick="toShowcase()" class="btn btn-dark">Find</button>
+        <br>
+        <hr>
+        <h2 class="display-rec" style="display: none;">we recommend you the best </h2>
+    </div>
+</div>
+
+    <footer><%- include("footer.ejs") %></footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        function toShowcase(){
+            $.post("/get-recommend",{
+                type: $("#crop").find(":selected").parent().attr("label"),
+                locn: $("#crop").find(":selected").text()
+            });
+            setTimeout(function() {}, 20000);
+            let var_name = $.get("/recommended");
+            console.log(var_name.name);
+            setTimeout(function() {}, 20000);
+            $(".display-rec").text(" We reccomend you : " + var_name.name);
+            $(".display-rec").show();
+        }
+    </script>
+</body>
+</html>

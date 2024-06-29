@@ -1,0 +1,13 @@
+/* styles.css */
+.weather-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgb(227, 32, 32);
+    padding: 20px;
+}
+
+.weather-card {
+    padding: 10px;
+    margin-bottom: 10px;
+}
